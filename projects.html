@@ -2,6 +2,16 @@
 <html lang="en">
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163409410-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-163409410-1');
+  </script>
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,9 +24,55 @@
 </head>
 
 <body>
-  <nav class="navbar border">
+  <nav class="navbar border justify-content-center">
     <span class="navbar-brand mb-0">Personal Projects</span>
   </nav>
+  <div class="container p-5">
+    <a href="/">&lt;&lt; Back</a>
+    <h5 class="mt-3">Social Platform </h5>
+    <p>
+      A social platform with minimalism, essentialism & realism as its core priorities.
+      It is currently on development. Utilised: HapiJS, Angular, MongoDB, Flutter.
+    </p>
+
+    <h5>General Platform for Wireless Sensor Network </h5>
+    <p>
+      A publish-subscribe based platform written in Java. I developed the context-aware
+      server & client libraries. Withthe client libraries, applications can register and
+      publish IoT data to the server. Subscribed programs will getnotified if any change
+      in data is detected. Utilised RMI (Java).
+      <a target="_blank" href="https://github.com/arunkumarv/gpwsn">Github</a>,
+    </p>
+
+    <h5>Instant Series </h5>
+    <p>
+      Chrome/Firefox extensions to see the Malayalam/Tamil meanings in a popup. To see the
+      meanings double click on any word.<br>
+      <a target="_blank"
+        href="https://chrome.google.com/webstore/detail/instant-malayalam/nflhocbogkaapgmlagfkpllhlafaljki">Chrome
+        Malayalam</a>,
+      <a target="_blank"
+        href="https://chrome.google.com/webstore/detail/instant-tamil/cbadcogdkhhkoghhcablnpbpadkdiljj?hl=ta">Firefox
+        Malayalam</a>,
+      <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/instant-malayalam/">Chrome Tamil</a>,
+      <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/instant-tamil/">Firefox Tamil</a>.
+    </p>
+    <h5>An RTOS scheduler (Rather task switcher)</h5>
+    <p>
+      A simple scheduler from scratch. Implemented fixed priority pre emptive scheduling.
+      It is specifically written for Atmega328P. Utilised: C, avr-gcc toolchain.<br>
+      <a target="_blank" href="https://www.youtube.com/watch?v=pLknZu1mUhs">Youtube</a>,
+      <a target="_blank" href="https://github.com/arunkumarv/rtos">Github</a>
+    </p>
+    <h5>Social Platform </h5>
+    <p>
+      Filter card is useful in implementing a search results sidebar filter. It is on early stage.
+      Will update on freetime.
+      <a target="_blank" href="https://github.com/arunkumarv/filter-card">Github</a>
+
+    </p>
+
+  </div>
 
 
   <!-- Optional JavaScript -->
