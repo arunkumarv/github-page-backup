@@ -14,7 +14,163 @@
             border-collapse: collapse;
         }
 
+        td {<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="jspdf.min.js"></script>
+    <script src="jspdf.plugin.autotable.js"></script>
+    <title>Violators</title>
+    <style>
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
         td {
+            border: 1px solid #ccc;
+            padding: 5px 15px;
+        }
+
+        .controls {
+            padding: 10px;
+            border: 1px solid #aaa;
+            background-color: aquamarine;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="text-align: center;">
+    <div class="controls">
+
+        <form id="ak-form">
+            <div style="padding-bottom: 10px;">
+            current_state_id: <input type="text" value="36" id="current_state_id" required>
+            current_user_id: <input type="text" value="3222" id="current_user_id" required>
+            current_user_name: <input type="text" value="8888888885" id="current_user_name" required>
+        </div>
+            From Date: <input type="date" id="from_date" required>
+            To Date: <input type="date" id="to_date" required>
+            <select id="choice">
+                <option value="1">Data Not Received</option>
+                <option value="2">Quarantine Violation</option>
+            </select>
+            <button type="submit">Get data</button>
+        </form>
+
+    </div>
+
+    <table id="list-violators">
+        <tr>
+            <td>Head 1</td>
+            <td>Head 2</td>
+            <td>Head 3</td>
+        </tr>
+    </table>
+    <button onclick="downloadViolators()">Download</button>
+
+    <div style="text-align: center; padding: 20px">
+        Used API in code - @Karthi copy paste to URL for Testing.<br>
+        <span id="fired-api" style="color:green;"></span>
+    </div>
+
+    <script>
+
+        let apiHost = "https://covid19.cdacchn.in:8080/api/listviolators";
+
+        let cred = { current_state_id: 36, current_user_id: 3222, current_user_name: 8888888885  };
+
+        function listViolatorsAddToTable(arr) {
+
+            $("#list-violators").empty();
+
+            var table = $("#list-violators");
+
+            row = $('<tr />');
+
+                table.append(row);
+
+                cell = $('<td>Head 1</td><td>Head 2</td><td>Head 3</td>')
+
+                row.append(cell);
+
+            arr.forEach(function (item, index) {
+
+                row = $('<tr />');
+
+                table.append(row);
+
+                cell = $('<td>' + item[0] + '</td><td>' + item[1] + '</td><td>' + item[2] + '</td>')
+
+                row.append(cell);
+            });
+
+        }
+
+        $('#ak-form').submit(function (e) {
+
+            e.preventDefault();
+
+            let params = {
+                current_state_id: document.getElementById("current_state_id").value, 
+                current_user_id: document.getElementById("current_user_id").value, 
+                current_user_name: document.getElementById("current_user_name").value,
+
+                from_date: document.getElementById("from_date").value, 
+                to_date: document.getElementById("to_date").value, 
+                choice: document.getElementById("choice").value
+            }
+
+            console.log(params);
+
+            getDataFromAPI(params);
+        });
+
+
+        function downloadViolators() {
+
+            var doc = new jsPDF();
+           
+            doc.text('Violators', 14, 20)
+
+            doc.autoTable({ startY:25,  html: '#list-violators' });
+
+            doc.save('download.pdf');
+        }
+
+        function getDataFromAPI(params) {
+
+            console.log(apiHost.concat("?", $.param(params)));
+
+            $("#fired-api").text(apiHost.concat("?", $.param(params)))
+
+            $.get(apiHost, params, function (res) {
+
+                console.log(res);
+
+                listViolatorsAddToTable(res.data);
+            });
+        }
+
+        $(function () {
+
+            getDataFromAPI({
+                current_state_id: document.getElementById("current_state_id").value, 
+                current_user_id: document.getElementById("current_user_id").value, 
+                current_user_name: document.getElementById("current_user_name").value,
+            });
+
+        })
+
+    </script>
+</body>
+
+</html>
             border: 1px solid #ccc;
             padding: 5px 15px;
         }
