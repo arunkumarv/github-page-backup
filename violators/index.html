@@ -33,6 +33,11 @@
     <div class="controls">
 
         <form id="ak-form">
+            <div style="padding-bottom: 10px;">
+            current_state_id: <input type="text" value="36" id="current_state_id" required>
+            current_user_id: <input type="text" value="3222" id="current_user_id" required>
+            current_user_name: <input type="text" value="8888888885" id="current_user_name" required>
+        </div>
             From Date: <input type="date" id="from_date" required>
             To Date: <input type="date" id="to_date" required>
             <select id="choice">
@@ -63,11 +68,6 @@
         let apiHost = "https://covid19.cdacchn.in:8080/api/listviolators";
 
         let cred = { current_state_id: 36, current_user_id: 3222, current_user_name: 8888888885  };
-
-        function getData() {
-
-            console.log(document.getElementById("from_date").value);
-        }
 
         function listViolatorsAddToTable(arr) {
 
@@ -101,7 +101,13 @@
             e.preventDefault();
 
             let params = {
-                ...cred, from_date: document.getElementById("from_date").value, to_date: document.getElementById("to_date").value, choice: document.getElementById("choice").value
+                current_state_id: document.getElementById("current_state_id").value, 
+                current_user_id: document.getElementById("current_user_id").value, 
+                current_user_name: document.getElementById("current_user_name").value,
+
+                from_date: document.getElementById("from_date").value, 
+                to_date: document.getElementById("to_date").value, 
+                choice: document.getElementById("choice").value
             }
 
             console.log(params);
@@ -135,7 +141,11 @@
 
         $(function () {
 
-            getDataFromAPI(cred);
+            getDataFromAPI({
+                current_state_id: document.getElementById("current_state_id").value, 
+                current_user_id: document.getElementById("current_user_id").value, 
+                current_user_name: document.getElementById("current_user_name").value,
+            });
 
         })
 
