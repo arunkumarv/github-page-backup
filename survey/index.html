@@ -2,23 +2,23 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-	    <link rel="stylesheet" href="/static/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
 
-    <title>Survey Form</title>
+  <title>Survey Form</title>
 </head>
 
-  <body class="d-flex flex-column h-100">
-    <header>
-  <!-- Fixed navbar -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Survey Form</a>
-    <!-- button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<body class="d-flex flex-column h-100">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Survey Form</a>
+      <!-- button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -35,256 +35,299 @@
       </ul --!>
     
     </div-->
-  </nav>
-</header>
+    </nav>
+  </header>
 
-<!-- Begin page content -->
-<main role="main" class="flex-shrink-0">
-  <div class="container">
+  <!-- Begin page content -->
+  <main role="main" class="flex-shrink-0">
+    <div class="container">
 
-
- <div class="form-row mt-4">
-    <div class="col-md-4 mb-3">
- 
-
-                <input type="number" class="form-control" id="mobile-number" placeholder="Mobile Number">
-          </div>
-    <div class="col-md-4 mb-3">
-            <button class="btn btn-primary mb-2 ">Search</button>
+      <div class="form-row mt-4">
+        <div class="col-md-4 mb-3">
+          <input type="number" class="form-control" id="mobile-number" placeholder="Mobile Number">
         </div>
-     </div>
-
- <div class="form-row">
-    <div class="col-md-4 mb-3">
-            <input type="text" class="form-control" id="family-head" placeholder="Name of Head of Family">
-             </div>
-    <div class="col-md-4 mb-3">
-            <input type="text" class="form-control" id="family-member" placeholder="Family Member Name">
-       </div>
-    <div class="col-md-1 mb-3">
-            <input type="number" class="form-control" id="age" placeholder="Age">
+        <div class="col-md-4 mb-3 text-center">
+          <button class="btn btn-primary mb-2 ">Search</button>
         </div>
-
-</div>
-
- <div class="form-row">
-         <div class="col-md-6 mb-3">
-                <label>Sex</label>
-             
-             <div class="form-check-inline">   <label class="form-check-label">  <input class="form-check-input" type="radio" name="sex" id="sex" value="Male"> Male</label> </div>
-         
-                      <div class="form-check-inline">   <label class="form-check-label">   <input class="form-check-input" type="radio" name="sex" id="sex" value="Female"> Female</label>
-					</div>
-           
-        </div>
-
-        </div>
-
-
-        <div class="form-group">
-            <textarea class="form-control" id="address" name="address" rows="3" placeholder="Address"></textarea>
-        </div>
-
-
-
-
-     <div class="form-row">
-         <div class="col-md-6 mb-3">
-          <div class="row">    <div class="col">        <label>Contact history with +ve patient</label> </div>
-           
-             <div class="col">    <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="contact-history" id="contact-history"
-                    value="Yes"> Yes</label>  </div>
-            <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="contact-history" id="contact-history"
-                    value="No"> No</label>   </div>  </div>
-            </div>
-        </div>
-	
-         <div class="col-md-6 mb-3">
-           <div class="row">    <div class="col">        <label>Fever</label>  </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="fever" id="fever" value="Yes"> Yes</label>
-            </div>
-              <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="fever" id="fever" value="No">No</label>
-            </div>   </div>
-        </div>
-
-    </div>  </div>
-
-     <div class="form-row">
-   <div class="col-md-6 mb-3">        <div class="row">    <div class="col">  
-                <label>Cough</label>  </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="cough" id="cough" value="Yes"> Yes</label>
-            </div>
-                      <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="cough" id="cough" value="No"> No</label>
-            </div>      </div>
-        </div>
-
-        </div>
-
-
-        <div class="col-md-6 mb-3"> <div class="row">    <div class="col">  
-                <label>Cold</label>  </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="cold" id="cold" value="Yes"> Yes</label>
-            </div>
-            <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="cold" id="cold" value="No"> No</label>
-            </div></div>
-        </div>
-
-        </div>
-     </div>
-	 
-	 
-	 
-	 
-	 
-	 
-      <div class="form-row">
-   <div class="col-md-6 mb-3">        <div class="row">    <div class="col">  
-                <label>Sari</label></div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="sari" id="sari" value="Yes"> Yes</label>
-              </div>
-                      <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="sari" id="sari" value="No"> No</label>
-            </div>
-        </div>
-
-   </div>    </div>
-
-     <div class="col-md-6 mb-3">        <div class="row">    <div class="col">  
-                <label>Other</label>
       </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="other" id="other" value="Yes"> Yes</label>
-            </div>
-          <div class="form-check-inline">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="other" id="other" value="No"> No</label>
-            </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <input type="text" class="form-control" id="family-head" placeholder="Name of Head of Family">
         </div>
-</div></div> </div>
+        <div class="col-md-4 mb-3">
+          <input type="text" class="form-control" id="family-member" placeholder="Family Member Name">
+        </div>
+        <div class="col-md-1 mb-3">
+          <input type="number" class="form-control" id="age" placeholder="Age">
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label>Sex</label>
+
+          <div class="form-check-inline"> <label class="form-check-label"> <input class="form-check-input" type="radio"
+                name="sex" id="sex" value="Male"> Male</label> </div>
+
+          <div class="form-check-inline"> <label class="form-check-label"> <input class="form-check-input" type="radio"
+                name="sex" id="sex" value="Female"> Female</label>
+          </div>
+
+        </div>
+
+      </div>
 
 
-   <div class="form-row">
-   <div class="col-md-12 mb-3">  <div class="row">     <div class="col">
-                <label>Date of symptoms</label>  </div>  <div class="col">
-                <input class="form-control" type="date">
-            </div>
-        </div>
-     </div>
-        </div>
+      <div class="form-group">
+        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Address"></textarea>
+      </div>
+
+
 
 
       <div class="form-row">
-   <div class="col-md-6 mb-3">        <div class="row">    <div class="col"> 
-                <label>ANC</label>
-         </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="anc" id="anc" value="Yes">Yes</label>
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col"> <label>Contact history with +ve patient</label> </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="contact-history" id="contact-history" value="Yes">
+                  Yes</label> </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="contact-history" id="contact-history" value="No">
+                  No</label> </div>
             </div>
-          
-            <div class="form-check-inline">      <label class="form-check-label"> <input class="form-check-input" type="radio" name="anc" id="anc" value="No"> No</label>
-            </div>
+          </div>
         </div>
-  </div>   </div>
 
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col"> <label>Fever</label> </div>
 
-      <div class="col-md-6 mb-3">        <div class="row">    <div class="col"> 
-                <label>PNC</label>
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="fever" id="fever" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="fever" id="fever" value="No">No</label>
+              </div>
             </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="pnc" id="pnc" value="Yes">Yes</label>
-      </div> <div class="form-check-inline">      <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="pnc" id="pnc" value="No">No</label>
-            </div>
+          </div>
+
         </div>
- </div>
-  </div>  </div>
+      </div>
 
-    
       <div class="form-row">
-   <div class="col-md-6 mb-3">        <div class="row">    <div class="col"> 
-                <label>Hydration</label>
-            </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="hydration" id="hydration" value="Yes"> Yes</label>
-              </div> <div class="form-check-inline">      <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="hydration" id="hydration" value="No"> No</label>
-            </div>
-        </div>
-        </div>         </div>
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Cough</label> </div>
 
-  <div class="col-md-6 mb-3">        <div class="row">    <div class="col"> 
-                <label>Diabetes</label>
-     </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2">   <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="diabetes" id="diabetes" value="Yes">Yes</label>
-                     </div> <div class="form-check-inline">      <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="diabetes" id="diabetes" value="No"> No</label>
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="cough" id="cough" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="cough" id="cough" value="No"> No</label>
+              </div>
             </div>
-        </div>
-        </div> 
-         </div>         </div>
+          </div>
 
-         <div class="form-row">
-   <div class="col-md-6 mb-3">        <div class="row">    <div class="col"> 
-                <label>Other</label>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Cold</label> </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="cold" id="cold" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="cold" id="cold" value="No"> No</label>
+              </div>
             </div>
-           
-             <div class="col">  
-                <div class="form-check-inline ml-2"> 
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Sari</label></div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="sari" id="sari" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="sari" id="sari" value="No"> No</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Other</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="other" id="other" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="other" id="other" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Date of symptoms</label> </div>
+            <div class="col">
+              <input class="form-control" type="date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>ANC</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="anc" id="anc" value="Yes">Yes</label>
+              </div>
+
+              <div class="form-check-inline"> <label class="form-check-label"> <input class="form-check-input"
+                    type="radio" name="anc" id="anc" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>PNC</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="pnc" id="pnc" value="Yes">Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="pnc" id="pnc" value="No">No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Hydration</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="hydration" id="hydration" value="Yes"> Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="hydration" id="hydration" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Diabetes</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="diabetes" id="diabetes" value="Yes">Yes</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="diabetes" id="diabetes" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <div class="row">
+            <div class="col">
+              <label>Other</label>
+            </div>
+
+            <div class="col">
+              <div class="form-check-inline ml-2">
                 <input class="form-check-input" type="radio" name="other" id="other" value="Yes">Yes</label>
-         </div> <div class="form-check-inline">      <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="other" id="other" value="No"> No</label>
+              </div>
+              <div class="form-check-inline"> <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="other" id="other" value="No"> No</label>
+              </div>
             </div>
-        </div> </div>  </div> </div>
+          </div>
+        </div>
+      </div>
 
 
-             <div class="form-row">
-   <div class="col-md-12 mb-3">  
-            <textarea class="form-control" id="address" name="address" rows="3" placeholder="Remarks"></textarea>
+      <div class="form-row">
+        <div class="col-md-12 mb-3">
+          <textarea class="form-control" id="address" name="address" rows="3" placeholder="Remarks"></textarea>
         </div>
 
+      </div>
+
+
+  </main>
+
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
     </div>
+  </footer>
 
-
-</main>
-
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/static/jquery-3.4.1.slim.min.js"></script>
-    <script src="/static/popper.min.js"></script>
-    <script src="/static/bootstrap.min.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="/static/jquery-3.4.1.slim.min.js"></script>
+  <script src="/static/popper.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
 </body>
 
 </html>
