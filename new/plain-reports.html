@@ -171,7 +171,7 @@
 
                         let dateMax = $('#dateMax').val();
 
-                        obj['dateRange'] = [dateMin, dateMax];
+                        obj['time'] = {min: dateMin, max: dateMax };
                 }
 
                 let check = $("input[name='check']:checked").val();
@@ -186,7 +186,7 @@
 
                 let maxAge = $("#maxAge").val();
 
-                obj['age'] = [minAge, maxAge]
+                obj['age'] = { min: minAge, max: maxAge }
 
                 console.log('object', obj);
 
