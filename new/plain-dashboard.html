@@ -5,23 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div {
+            border: 1px solid #ececec;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
-<body>    
-    <div>Houses</div>
-    <div id="houses">No Data</div>
-    <div>Citizen</div>
-    <div id="citizen">No Data</div>
-    <div>Travel History</div>
+<body>
+    <div>Houses
+    <div id="houses">No Data</div></div>
+    <div>Citizen
+    <div id="citizen">No Data</div></div>
+    <div>Travel History
     <div id="travel-history">No Data</div>
-    <div>Diabetes</div>
-    <div id="diabetes">No Data</div>
-    <div>Hyper Tension</div>
-    <div id="hyper-tension">No Data</div>
+    <div>Diabetes
+    <div id="diabetes">No Data</div></div>
+    <div>Hyper Tension
+    <div id="hyper-tension">No Data</div></div>
     <div>
         <canvas id="groupedBarChart" width="400" height="400"></canvas>
     </div>
-    
+
+    <div>
+        <canvas id="pie1Chart" width="400" height="400"></canvas>
+    </div>
+
 
     <script src="static/jquery-3.2.1.slim.min.js"></script>
     <script src="static/Chart.min.js"></script>
@@ -81,12 +92,38 @@
 
         $(function () {
             var groupedBarCtx = document.getElementById("groupedBarChart").getContext("2d");
+
             var groupedBarChart = new Chart(groupedBarCtx, {
                 type: "bar",
                 data: barChartData,
                 options: chartOptions
             });
         });
+    </script>
+
+    <script>
+        var pie1ChartCtx = document.getElementById("pie1Chart").getContext("2d");
+
+
+
+        var pie1Chart = new Chart(pie1ChartCtx, {
+            type: 'pie',
+            data: {
+                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+                datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                    data: [2478, 5267, 734, 784, 433]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Predicted world population (millions) in 2050'
+                }
+            }
+        });
+
     </script>
 </body>
 

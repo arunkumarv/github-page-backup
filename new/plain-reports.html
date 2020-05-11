@@ -169,7 +169,7 @@
 
                         let dateMin = $('#dateMin').val();
 
-                        let dateMax = $('#dateMin').val();
+                        let dateMax = $('#dateMax').val();
 
                         obj['dateRange'] = [dateMin, dateMax];
                 }
@@ -177,6 +177,10 @@
                 let check = $("input[name='check']:checked").val();
 
                 obj['check'] = check;
+
+                let gender = $("input[name='gender']:checked").val();
+
+                obj['gender'] = gender;
 
                 let minAge = $("#minAge").val();
 
