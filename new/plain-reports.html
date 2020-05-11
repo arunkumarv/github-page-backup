@@ -33,14 +33,16 @@
                 </td>
                 <td>
                     <input type="radio" name="based" id="based" value="symptomBased">Symptom based
-                    <input type="checkbox" name="" id="">Cough
-                    <input type="checkbox" name="" id="">Cold
-                    <input type="checkbox" name="" id="">Fever
-                    <input type="checkbox" name="" id="">Diabetes
-                    <input type="checkbox" name="" id="">Sari
-                    <input type="checkbox" name="" id="">High Risk Contact
-                    <input type="checkbox" name="" id="">Low Risk Contact
-                    <input type="checkbox" name="" id="">High Risk Contact
+                    <input type="checkbox" name="cough" id="">Cough
+                    <input type="checkbox" name="cold" id="">Cold
+                    <input type="checkbox" name="fever" id="">Fever
+                    <input type="checkbox" name="diabetes" id="">Diabetes
+                    <input type="checkbox" name="sari" id="">Sari
+                    <input type="checkbox" name="highRiskContact" id="">High Risk Contact
+                    <input type="checkbox" name="lowRiskContact" id="">Low Risk Contact
+                    <input type="checkbox" name="pnc" id="">PNC
+                    <input type="checkbox" name="anc" id="">ANC
+                    <input type="checkbox" name="hyperTension" id="">Hyper Tension
                     <br>
                     <input type="radio" name="based" id="based" value="userBased">User based
                     <input type="text" name="mobile" id="mobile" placeholder="Mobilenumber">
@@ -54,7 +56,7 @@
                     From: <input type="date" name="dateMin" id="dateMin">
                     To: <input type="date" name="dateMax" id="dateMax">
                     <br>
-                    <input type="radio" name="dateType" id="dateType" value="today">Today 
+                    <input type="radio" name="dateType" id="dateType" value="today">As of Today 
                 </td>
             </tr>
             <tr>
@@ -76,6 +78,12 @@
                 <td>
                     Min: <input type="number" name="minAge" id="minAge">
                     Max: <input type="number" name="maxAge" id="maxAge">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Submit">
                 </td>
             </tr>
         </table>
