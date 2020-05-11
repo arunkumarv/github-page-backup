@@ -17,8 +17,11 @@
             border: 1px solid #eaeaea;
             padding: 10px;
         }
+
         div {
-            padding: 10px;border: 1px solid #ececec;margin: 2px;
+            padding: 10px;
+            border: 1px solid #ececec;
+            margin: 2px;
         }
     </style>
 </head>
@@ -110,7 +113,7 @@
         </table>
     </form>
 
-    <pre id="json"  class="prettyprint"></pre>
+    <pre id="json" class="prettyprint"></pre>
 
     <script>
 
@@ -120,7 +123,7 @@
 
                 e.preventDefault();
 
-                console.log ( new FormData(this))
+                console.log(new FormData(this))
 
                 let obj = {};
 
@@ -171,7 +174,7 @@
 
                         let dateMax = $('#dateMax').val();
 
-                        obj['time'] = {min: dateMin, max: dateMax };
+                        obj['time'] = { min: dateMin, max: dateMax };
                 }
 
                 let check = $("input[name='check']:checked").val();
@@ -190,7 +193,7 @@
 
                 console.log('object', obj);
 
-                console.log ('obj as params', $.param(obj))
+                console.log('obj as params', $.param(obj))
 
                 $("#json").html(JSON.stringify(obj, null, 4))
 
@@ -198,9 +201,16 @@
 
                 if (api != '') {
 
-                    $.post(api, obj, function (res) {
-
-                        console.log(res);
+                    $.ajax({
+                        url: api,
+                        type: 'POST',
+                        data: JSON.stringify(obj),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        async: false,
+                        success: function ( res ) {
+                            console.log ( res )
+                        }
                     });
                 }
             });
