@@ -1,12 +1,84 @@
-<form>
-    <select name="district" id="district">
-        <option value="Yavatmol">Yavatmol</option>
-    </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #eaeaea;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    District
+                </td>
+                <td>
+                    <select name="district" id="district">
+                        <option value="Yavatmol">Yavatmol</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Based 
+                </td>
+                <td>
+                    <input type="radio" name="based" id="based" value="symptomBased">Symptom based
+                    <input type="checkbox" name="" id="">Cough
+                    <input type="checkbox" name="" id="">Cold
+                    <input type="checkbox" name="" id="">Fever
+                    <input type="checkbox" name="" id="">Diabetes
+                    <input type="checkbox" name="" id="">Sari
+                    <input type="checkbox" name="" id="">High Risk Contact
+                    <input type="checkbox" name="" id="">Low Risk Contact
+                    <input type="checkbox" name="" id="">High Risk Contact
+                    <br>
+                    <input type="radio" name="based" id="based" value="userBased">User based
+                    <input type="text" name="mobile" id="mobile" placeholder="Mobilenumber">
 
-    <input type="radio" name="dateType" id="dateType" value="range">
-    <input type="radio" name="dateType" id="dateType" value="today">
-    
-    <input type="date" name="dateMin" id="dateMax">
-
-    <input type="radio" name="unknown" id="unknown">
-</form>
+                </td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>
+                    <input type="radio" name="dateType" id="dateType" value="range">Range 
+                    From: <input type="date" name="dateMin" id="dateMin">
+                    To: <input type="date" name="dateMax" id="dateMax">
+                    <br>
+                    <input type="radio" name="dateType" id="dateType" value="today">Today 
+                </td>
+            </tr>
+            <tr>
+                <td>Unknown</td>
+                <td>
+                    <input type="radio" name="unknown" id="unknown" value="all">Symptom on All selected days 
+                    <input type="radio" name="unknown" id="unknown" value="all">Symptom on Any selected days 
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="checkbox" name="male" id="male" value="Yes">Male
+                    <input type="checkbox" name="female" id="female" value="Yes">Female
+                </td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>
+                    Min: <input type="number" name="minAge" id="minAge">
+                    Max: <input type="number" name="maxAge" id="maxAge">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
