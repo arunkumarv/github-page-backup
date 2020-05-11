@@ -148,7 +148,9 @@
 
                     case 'today':
 
-                        obj['date'] = new Date();
+                        let today = new Date();
+
+                        obj['date'] = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate()
 
                         break;
 
@@ -178,6 +180,7 @@
                 let api = $("#api").val();
 
                 if (api != '') {
+
                     $.get(api, obj, function (res) {
 
                         console.log(res);
