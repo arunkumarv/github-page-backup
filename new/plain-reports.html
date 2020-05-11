@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="static/jquery-3.2.1.slim.min.js"></script>
     <style>
         table {
             border-collapse: collapse;
         }
+
         td {
             border: 1px solid #eaeaea;
             padding: 10px;
         }
     </style>
 </head>
+
 <body>
-    <form>
+    <div style="margin-bottom: 10px;">
+    <input type="text" name="api" id="api"> (eg: https://covid19.cdacchn.in/api/report, if this box has api link then request will be fired to that link along with object)
+</div>
+    <form id="show-details-form" name="show-details-form">
         <table>
             <tr>
                 <td>
@@ -24,53 +31,57 @@
                 <td>
                     <select name="district" id="district">
                         <option value="Yavatmol">Yavatmol</option>
+                        <option value="Dist2">Dist2</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>
-                   Based 
+                    Based
                 </td>
                 <td>
-                    <input type="radio" name="based" id="based" value="symptomBased">Symptom based
-                    <input type="checkbox" name="cough" id="">Cough
-                    <input type="checkbox" name="cold" id="">Cold
-                    <input type="checkbox" name="fever" id="">Fever
-                    <input type="checkbox" name="diabetes" id="">Diabetes
-                    <input type="checkbox" name="sari" id="">Sari
-                    <input type="checkbox" name="highRiskContact" id="">High Risk Contact
-                    <input type="checkbox" name="lowRiskContact" id="">Low Risk Contact
-                    <input type="checkbox" name="pnc" id="">PNC
-                    <input type="checkbox" name="anc" id="">ANC
-                    <input type="checkbox" name="hyperTension" id="">Hyper Tension
+                    <input type="radio" name="based" value="symptomsBased" checked>Symptoms based
+
+                    <input type="checkbox" name="symptoms" value="Cough">Cough
+                    <input type="checkbox" name="symptoms" value="Cold">Cold
+                    <input type="checkbox" name="symptoms" value="Fever">Fever
+                    <input type="checkbox" name="symptoms" value="Diabetes">Diabetes
+                    <input type="checkbox" name="symptoms" value="Sari">Sari
+                    <input type="checkbox" name="symptoms" value="High Risk Contact">High Risk Contact
+                    <input type="checkbox" name="symptoms" value="Low Risk Contact">Low Risk Contact
+                    <input type="checkbox" name="symptoms" value="PNC">PNC
+                    <input type="checkbox" name="symptoms" value="ANC">ANC
+                    <input type="checkbox" name="symptoms" value="Hyper Tension">Hyper Tension
+
                     <br>
-                    <input type="radio" name="based" id="based" value="userBased">User based
-                    <input type="text" name="mobile" id="mobile" placeholder="Mobilenumber">
+                    <input type="radio" name="based" value="userBased">User based
+                    <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
 
                 </td>
             </tr>
             <tr>
                 <td>Date</td>
                 <td>
-                    <input type="radio" name="dateType" id="dateType" value="range">Range 
+                    <input type="radio" name="dateType" value="range" checked>Range
                     From: <input type="date" name="dateMin" id="dateMin">
                     To: <input type="date" name="dateMax" id="dateMax">
                     <br>
-                    <input type="radio" name="dateType" id="dateType" value="today">As of Today 
+                    <input type="radio" name="dateType" value="today">As of Today
                 </td>
             </tr>
             <tr>
-                <td>Unknown</td>
+                <td>Untitled</td>
                 <td>
-                    <input type="radio" name="unknown" id="unknown" value="all">Symptom on All selected days 
-                    <input type="radio" name="unknown" id="unknown" value="all">Symptom on Any selected days 
+                    <input type="radio" name="untitled" value="all" checked>Symptom on All selected days
+                    <input type="radio" name="untitled" value="any">Symptom on Any selected days
                 </td>
             </tr>
             <tr>
                 <td>Gender</td>
                 <td>
-                    <input type="checkbox" name="male" id="male" value="Yes">Male
-                    <input type="checkbox" name="female" id="female" value="Yes">Female
+                    <input type="radio" name="gender"  value="Male">Male
+                    <input type="radio" name="gender"  value="Female">Female
+                    <input type="radio" name="gender"  value="Both">Both
                 </td>
             </tr>
             <tr>
@@ -88,5 +99,90 @@
             </tr>
         </table>
     </form>
+
+    <script>
+
+        $(function () {
+
+            $("#show-details-form").on('submit', function (e) {
+
+                e.preventDefault();
+
+                let obj = {};
+
+                let district = $("#district option:selected").text();
+
+                obj['district'] = district;
+
+                let based = $("input[name='based']:checked").val();
+
+                obj['based'] = based;
+
+                switch (based) {
+
+                    case "symptomsBased":
+
+                        let symptoms = [];
+
+                        $('[name="symptoms"]:checkbox:checked').each(function (i) { symptoms[i] = $(this).val(); });
+
+                        obj['symptoms'] = symptoms;
+
+                        break;
+
+                    case 'userBased':
+
+                        let mobile = $('#mobile').val();
+
+                        obj['mobile'] = mobile
+                }
+
+                let dateType = $("input[name='dateType']:checked").val();
+
+                obj['dateType'] = dateType;
+
+                switch (dateType) {
+
+                    case 'today':
+
+                        obj['date'] = new Date();
+
+                        break;
+
+                    case 'range':
+
+                        let dateMin = $('#dateMin').val();
+
+                        let dateMax = $('#dateMin').val();
+
+                        obj['dateRange'] = [dateMin, dateMax];
+                }
+
+                let untitled = $("input[name='untitled']:checked").val();
+
+                obj['untitled'] = untitled;
+
+                let minAge = $("#minAge").val();
+
+                let maxAge = $("#maxAge").val();
+
+                obj['age'] = [minAge, maxAge]
+
+                console.log('object', obj);
+
+                let api = $("#api").val();
+
+
+                if (api != '') {
+                    $.get(api, obj, function (res) {
+
+                        console.log(res);
+                    });
+                }
+
+            });
+        });
+    </script>
 </body>
+
 </html>
