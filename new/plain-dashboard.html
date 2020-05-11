@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>    
+    <div>Houses</div>
+    <div id="houses">No Data</div>
+    <div>Citizen</div>
+    <div id="citizen">No Data</div>
+    <div>Travel History</div>
+    <div id="travel-history">No Data</div>
+    <div>Diabetes</div>
+    <div id="diabetes">No Data</div>
+    <div>Hyper Tension</div>
+    <div id="hyper-tension">No Data</div>
+    <div>
+        <canvas id="groupedBarChart" width="400" height="400"></canvas>
+    </div>
+    
+
+    <script src="static/jquery-3.2.1.slim.min.js"></script>
+    <script src="static/Chart.min.js"></script>
+
+    <script>
+        var barChartData = {
+            labels: ["Absence of OB", "Closeness", "Credibility", "Heritage", "M Disclosure", "Provenance", "Reliability", "Transparency"],
+            datasets: [
+                {
+                    label: "American Express",
+                    backgroundColor: "pink",
+                    borderColor: "red",
+                    borderWidth: 1,
+                    data: [3, 5, 6, 7, 3, 5, 6, 7]
+                },
+                {
+                    label: "Mastercard",
+                    backgroundColor: "lightblue",
+                    borderColor: "blue",
+                    borderWidth: 1,
+                    data: [4, 7, 3, 6, 10, 7, 4, 6]
+                },
+                {
+                    label: "Paypal",
+                    backgroundColor: "lightgreen",
+                    borderColor: "green",
+                    borderWidth: 1,
+                    data: [10, 7, 4, 6, 9, 7, 3, 10]
+                },
+                {
+                    label: "Visa",
+                    backgroundColor: "yellow",
+                    borderColor: "orange",
+                    borderWidth: 1,
+                    data: [6, 9, 7, 3, 10, 7, 4, 6]
+                }
+            ]
+        };
+
+        var chartOptions = {
+            responsive: true,
+            legend: {
+                position: "top"
+            },
+            title: {
+                display: true,
+                text: "Symptoms Status"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+
+        $(function () {
+            var groupedBarCtx = document.getElementById("groupedBarChart").getContext("2d");
+            var groupedBarChart = new Chart(groupedBarCtx, {
+                type: "bar",
+                data: barChartData,
+                options: chartOptions
+            });
+        });
+    </script>
+</body>
+
+</html>

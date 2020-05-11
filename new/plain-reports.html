@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="static/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
     <style>
         table {
             border-collapse: collapse;
@@ -14,6 +16,9 @@
         td {
             border: 1px solid #eaeaea;
             padding: 10px;
+        }
+        div {
+            padding: 10px;border: 1px solid #ececec;margin: 2px;
         }
     </style>
 </head>
@@ -42,7 +47,7 @@
                 </td>
                 <td>
                     <input type="radio" name="type" value="symptomsBased" checked>Symptoms based
-                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                    <div>
                         <input type="checkbox" name="symptoms" value="Cough">Cough
                         <input type="checkbox" name="symptoms" value="Cold">Cold
                         <input type="checkbox" name="symptoms" value="Fever">Fever
@@ -57,7 +62,7 @@
                     </div>
                     <br>
                     <input type="radio" name="type" value="userBased">User based
-                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                    <div>
                         <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
                     </div>
 
@@ -67,7 +72,7 @@
                 <td>Date</td>
                 <td>
                     <input type="radio" name="dateType" value="range" checked>Range
-                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                    <div>
                         From: <input type="date" name="dateMin" id="dateMin">
                         To: <input type="date" name="dateMax" id="dateMax">
                     </div>
@@ -105,7 +110,7 @@
         </table>
     </form>
 
-    <pre id="json"></pre>
+    <pre id="json"  class="prettyprint"></pre>
 
     <script>
 
@@ -114,6 +119,8 @@
             $("#show-details-form").on('submit', function (e) {
 
                 e.preventDefault();
+
+                console.log ( new FormData(this))
 
                 let obj = {};
 
@@ -179,18 +186,19 @@
 
                 console.log('object', obj);
 
-                $("#json").html(JSON.stringify(obj))
+                console.log ('obj as params', $.param(obj))
+
+                $("#json").html(JSON.stringify(obj, null, 4))
 
                 let api = $("#api").val();
 
                 if (api != '') {
 
-                    $.get(api, obj, function (res) {
+                    $.post(api, obj, function (res) {
 
                         console.log(res);
                     });
                 }
-
             });
         });
     </script>
