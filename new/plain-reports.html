@@ -40,7 +40,7 @@
                     Based
                 </td>
                 <td>
-                    <input type="radio" name="based" value="symptomsBased" checked>Symptoms based
+                    <input type="radio" name="type" value="symptomsBased" checked>Symptoms based
 
                     <input type="checkbox" name="symptoms" value="Cough">Cough
                     <input type="checkbox" name="symptoms" value="Cold">Cold
@@ -55,7 +55,7 @@
                     <input type="checkbox" name="symptoms" value="Others">Others
 
                     <br>
-                    <input type="radio" name="based" value="userBased">User based
+                    <input type="radio" name="type" value="userBased">User based
                     <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
 
                 </td>
@@ -71,10 +71,10 @@
                 </td>
             </tr>
             <tr>
-                <td>Untitled</td>
+                <td>Check</td>
                 <td>
-                    <input type="radio" name="untitled" value="all" checked>Symptom on All selected days
-                    <input type="radio" name="untitled" value="any">Symptom on Any selected days
+                    <input type="radio" name="check" value="all" checked>Symptom on All selected days
+                    <input type="radio" name="check" value="any">Symptom on Any selected days
                 </td>
             </tr>
             <tr>
@@ -101,6 +101,8 @@
         </table>
     </form>
 
+    <pre id="json"></pre>
+
     <script>
 
         $(function () {
@@ -115,11 +117,11 @@
 
                 obj['district'] = district;
 
-                let based = $("input[name='based']:checked").val();
+                let type = $("input[name='type']:checked").val();
 
-                obj['based'] = based;
+                obj['type'] = type;
 
-                switch (based) {
+                switch (type) {
 
                     case "symptomsBased":
 
@@ -159,9 +161,9 @@
                         obj['dateRange'] = [dateMin, dateMax];
                 }
 
-                let untitled = $("input[name='untitled']:checked").val();
+                let check = $("input[name='check']:checked").val();
 
-                obj['untitled'] = untitled;
+                obj['check'] = check;
 
                 let minAge = $("#minAge").val();
 
@@ -171,8 +173,9 @@
 
                 console.log('object', obj);
 
-                let api = $("#api").val();
+                $("#json").html (JSON.stringify(obj))
 
+                let api = $("#api").val();
 
                 if (api != '') {
                     $.get(api, obj, function (res) {
