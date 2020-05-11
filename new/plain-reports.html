@@ -20,8 +20,9 @@
 
 <body>
     <div style="margin-bottom: 10px;">
-    <input type="text" name="api" id="api" placeholder="API full link"> (eg: https://covid19.cdacchn.in/api/report, if this box has api link then request will be fired to that link along with object)
-</div>
+        <input type="text" name="api" id="api" placeholder="API full link"> (eg: https://covid19.cdacchn.in/api/report,
+        if this box has api link then request will be fired to that link along with object)
+    </div>
     <form id="show-details-form" name="show-details-form">
         <table>
             <tr>
@@ -41,22 +42,24 @@
                 </td>
                 <td>
                     <input type="radio" name="type" value="symptomsBased" checked>Symptoms based
-
-                    <input type="checkbox" name="symptoms" value="Cough">Cough
-                    <input type="checkbox" name="symptoms" value="Cold">Cold
-                    <input type="checkbox" name="symptoms" value="Fever">Fever
-                    <input type="checkbox" name="symptoms" value="Diabetes">Diabetes
-                    <input type="checkbox" name="symptoms" value="Sari">Sari
-                    <input type="checkbox" name="symptoms" value="High Risk Contact">High Risk Contact
-                    <input type="checkbox" name="symptoms" value="Low Risk Contact">Low Risk Contact
-                    <input type="checkbox" name="symptoms" value="PNC">PNC
-                    <input type="checkbox" name="symptoms" value="ANC">ANC
-                    <input type="checkbox" name="symptoms" value="Hyper Tension">Hyper Tension
-                    <input type="checkbox" name="symptoms" value="Others">Others
-
+                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                        <input type="checkbox" name="symptoms" value="Cough">Cough
+                        <input type="checkbox" name="symptoms" value="Cold">Cold
+                        <input type="checkbox" name="symptoms" value="Fever">Fever
+                        <input type="checkbox" name="symptoms" value="Diabetes">Diabetes
+                        <input type="checkbox" name="symptoms" value="Sari">Sari
+                        <input type="checkbox" name="symptoms" value="High Risk Contact">High Risk Contact
+                        <input type="checkbox" name="symptoms" value="Low Risk Contact">Low Risk Contact
+                        <input type="checkbox" name="symptoms" value="PNC">PNC
+                        <input type="checkbox" name="symptoms" value="ANC">ANC
+                        <input type="checkbox" name="symptoms" value="Hyper Tension">Hyper Tension
+                        <input type="checkbox" name="symptoms" value="Others">Others
+                    </div>
                     <br>
                     <input type="radio" name="type" value="userBased">User based
-                    <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
+                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                        <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
+                    </div>
 
                 </td>
             </tr>
@@ -64,9 +67,10 @@
                 <td>Date</td>
                 <td>
                     <input type="radio" name="dateType" value="range" checked>Range
-                    From: <input type="date" name="dateMin" id="dateMin">
-                    To: <input type="date" name="dateMax" id="dateMax">
-                    <br>
+                    <div style="padding: 10px;border: 1px solid #ececec;margin: 2px;">
+                        From: <input type="date" name="dateMin" id="dateMin">
+                        To: <input type="date" name="dateMax" id="dateMax">
+                    </div>
                     <input type="radio" name="dateType" value="today">As of Today
                 </td>
             </tr>
@@ -80,16 +84,16 @@
             <tr>
                 <td>Gender</td>
                 <td>
-                    <input type="radio" name="gender"  value="Male">Male
-                    <input type="radio" name="gender"  value="Female">Female
-                    <input type="radio" name="gender"  value="Both">Both
+                    <input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female
+                    <input type="radio" name="gender" value="Both">Both
                 </td>
             </tr>
             <tr>
                 <td>Age</td>
                 <td>
-                    Min: <input type="number" name="minAge" id="minAge">
-                    Max: <input type="number" name="maxAge" id="maxAge">
+                    Min: <input type="number" name="minAge" id="minAge" value="0">
+                    Max: <input type="number" name="maxAge" id="maxAge" value="0">
                 </td>
             </tr>
             <tr>
@@ -175,7 +179,7 @@
 
                 console.log('object', obj);
 
-                $("#json").html (JSON.stringify(obj))
+                $("#json").html(JSON.stringify(obj))
 
                 let api = $("#api").val();
 
