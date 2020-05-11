@@ -23,18 +23,26 @@
     <div>Houses
         <div id="houses">No Data</div>
     </div>
-    <div>Citizen
-        <div id="citizen">No Data</div>
+    <div>Citzen
+        <div id="Citzen">No Data</div>
     </div>
-    <div>Travel History
-        <div id="travel-history">No Data</div>
+    <div>Contact History
+        <div id="Contact-history">No Data</div>
     </div>
     <div>Diabetes
-        <div id="diabetes">No Data</div>
+        <div id="Diabetes">No Data</div>
+    </div>
+    <div>Family
+        <div id="Family">No Data</div>
     </div>
     <div>Hyper Tension
-        <div id="hyper-tension">No Data</div>
+        <div id="Hyper-tension">No Data</div>
     </div>
+    <div>Travel History
+        <div id="Travel-history">No Data</div>
+    </div>
+
+
     <div>
         <canvas id="groupedBarChart" width="400" height="400"></canvas>
     </div>
@@ -43,74 +51,157 @@
         <canvas id="pie1Chart" width="400" height="400"></canvas>
     </div>
 
+    <div>
+        <canvas id="pie2Chart" width="400" height="400"></canvas>
+    </div>
 
-    <script src="static/jquery-3.2.1.slim.min.js"></script>
+
+    <script src="static/jquery-3.2.1.min.js"></script>
     <script src="static/Chart.min.js"></script>
 
     <script>
-        var barChartData = {
-            labels: ["Absence of OB", "Closeness", "Credibility", "Heritage", "M Disclosure", "Provenance", "Reliability", "Transparency"],
+        let apiHost = "https://covid19.cdacchn.in:8080";
+
+        let selectedDistrictId = 376
+
+        $(function () {
+
+            $.get(apiHost.concat("/survey/count"), { district_id: selectedDistrictId }, function (res) {
+
+                // console.log(res);
+
+                if (res.status == true) {
+
+                    $("#Citzen").html(res.data.Citzen)
+
+                    $("#Contact-history").html(res.data['Contact-history'])
+
+                    $("#Diabetes").html(res.data['Diabetes'])
+
+                    $("#Family").html(res.data['Family'])
+
+                    $("#Hyper-tension").html(res.data['Hyper-tension'])
+
+                    $("#Travel-history").html(res.data['Travel-history'])
+                }
+            });
+
+            $.get(apiHost.concat("/survey/bar"), { district_id: selectedDistrictId }, function (res) {
+
+                console.log(res)
+
+                if (res.status == true) {
+
+                    let labels = Object.keys(res.data);
+
+                    let maleData = [], femaleData = [], otherData = [];
+
+                    labels.forEach(function (value, index) {
+
+                        maleData.push(res.data[value].male);
+
+                        femaleData.push(res.data[value].female);
+
+                        otherData.push(res.data[value].other);
+                    })
+
+                    groupedBarChartData.labels = labels;
+
+                    groupedBarChartData.datasets[0].data = maleData
+
+                    groupedBarChartData.datasets[1].data = femaleData
+
+                    groupedBarChartData.datasets[2].data = otherData
+
+                    groupedBarChart.update();
+                }
+
+
+            });
+
+            $.get(apiHost.concat("/survey/pie1"), { district_id: selectedDistrictId }, function (res) {
+
+                // console.log('pie1', res)
+
+                if (res.status == true) {
+
+                    Object.keys(res.data).forEach(function (value, index) {
+
+                        updatePieChart(pie1Chart, value, res.data[value])
+                    })
+                }
+            });
+
+            $.get(apiHost.concat("/survey/pie2"), { district_id: selectedDistrictId }, function (res) {
+
+                // console.log('pie2', res)
+
+                if (res.status == true) {
+
+                    Object.keys(res.data).forEach(function (value, index) {
+
+                        updatePieChart(pie2Chart, value, res.data[value])
+                    })
+                }
+
+            });
+
+            var groupedBarChartCtx = document.getElementById("groupedBarChart").getContext("2d");
+
+            var groupedBarChart = new Chart(groupedBarChartCtx, {
+                type: "bar",
+                data: groupedBarChartData,
+                options: groupedBarChartOptions
+            });
+            var pie1ChartCtx = document.getElementById("pie1Chart").getContext("2d");
+
+            var pie1Chart = new Chart(pie1ChartCtx, {
+                type: 'pie',
+                data: pie1ChartData,
+                options: pie1ChartOptions
+            });
+            var pie2ChartCtx = document.getElementById("pie2Chart").getContext("2d");
+
+            var pie2Chart = new Chart(pie2ChartCtx, {
+                type: 'pie',
+                data: pie2ChartData,
+                options: pie2ChartOptions
+            });
+
+
+        });
+
+    </script>
+
+    <script>
+        var groupedBarChartData = {
+            labels: [],
             datasets: [
                 {
-                    label: "American Express",
+                    label: "Male",
                     backgroundColor: "pink",
                     borderColor: "red",
                     borderWidth: 1,
-                    data: [3, 5, 6, 7, 3, 5, 6, 7]
+                    data: []
                 },
                 {
-                    label: "Mastercard",
+                    label: "Female",
                     backgroundColor: "lightblue",
                     borderColor: "blue",
                     borderWidth: 1,
-                    data: [4, 7, 3, 6, 10, 7, 4, 6]
+                    data: []
                 },
                 {
-                    label: "Paypal",
+                    label: "Others",
                     backgroundColor: "lightgreen",
                     borderColor: "green",
                     borderWidth: 1,
-                    data: [10, 7, 4, 6, 9, 7, 3, 10]
+                    data: []
                 },
-                {
-                    label: "Visa",
-                    backgroundColor: "yellow",
-                    borderColor: "orange",
-                    borderWidth: 1,
-                    data: [6, 9, 7, 3, 10, 7, 4, 6]
-                },
-                {
-                    label: "American Express1",
-                    backgroundColor: "pink",
-                    borderColor: "red",
-                    borderWidth: 1,
-                    data: [3, 5, 6, 7, 3, 5, 6, 7]
-                },
-                {
-                    label: "Mastercard1",
-                    backgroundColor: "lightblue",
-                    borderColor: "blue",
-                    borderWidth: 1,
-                    data: [4, 7, 3, 6, 10, 7, 4, 6]
-                },
-                {
-                    label: "Paypal1",
-                    backgroundColor: "lightgreen",
-                    borderColor: "green",
-                    borderWidth: 1,
-                    data: [10, 7, 4, 6, 9, 7, 3, 10]
-                },
-                {
-                    label: "Visa1",
-                    backgroundColor: "yellow",
-                    borderColor: "orange",
-                    borderWidth: 1,
-                    data: [6, 9, 7, 3, 10, 7, 4, 6]
-                }
             ]
         };
 
-        var chartOptions = {
+        var groupedBarChartOptions = {
             responsive: true,
             legend: {
                 position: "top"
@@ -128,39 +219,45 @@
             }
         }
 
-        $(function () {
-            var groupedBarCtx = document.getElementById("groupedBarChart").getContext("2d");
+        var pie1ChartData = {
+            labels: [],
+            datasets: [{
+                label: "Male Female Others",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: []
+            }]
+        }
 
-            var groupedBarChart = new Chart(groupedBarCtx, {
-                type: "bar",
-                data: barChartData,
-                options: chartOptions
-            });
-        });
-    </script>
-
-    <script>
-        var pie1ChartCtx = document.getElementById("pie1Chart").getContext("2d");
-
-
-
-        var pie1Chart = new Chart(pie1ChartCtx, {
-            type: 'pie',
-            data: {
-                labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-                datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                    data: [2478, 5267, 734, 784, 433]
-                }]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Predicted world population (millions) in 2050'
-                }
+        var pie1ChartOptions = {
+            title: {
+                display: true,
+                text: 'Male Female Others'
             }
-        });
+        }
+
+        var pie2ChartData = {
+            labels: [],
+            datasets: [{
+                label: "ANC/PNC",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: []
+            }]
+        }
+
+        var pie2ChartOptions = {
+            title: {
+                display: true,
+                text: 'ANC/PNC'
+            }
+        }
+
+        function updatePieChart(chart, label, data) {
+            chart.data.labels.push(label);
+            chart.data.datasets.forEach((dataset) => {
+                dataset.data.push(data);
+            });
+            chart.update();
+        }
 
     </script>
 </body>

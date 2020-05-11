@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="static/jquery-3.2.1.slim.min.js"></script>
+    <script src="static/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
     <style>
@@ -64,7 +64,7 @@
                         <input type="checkbox" name="symptoms" value="Others">Others
                     </div>
                     <br>
-                    <input type="radio" name="type" value="userBased">User based
+                    <input type="radio" name="type"  value="userBased">User based
                     <div>
                         <input type="number" name="mobile" id="mobile" placeholder="Mobilenumber">
                     </div>
@@ -76,8 +76,8 @@
                 <td>
                     <input type="radio" name="dateType" value="range">Range
                     <div>
-                        From: <input type="date" name="dateMin" id="dateMin">
-                        To: <input type="date" name="dateMax" id="dateMax">
+                        From: <input type="date" name="dateMin" id="dateMin" value=2020-01-01>
+                        To: <input type="date" name="dateMax" id="dateMax" value=2020-01-01>
                     </div>
                     <input type="radio" name="dateType" value="today" checked>As of Today
                 </td>
@@ -118,6 +118,8 @@
     <script>
 
         $(function () {
+
+            
 
             $("#show-details-form").on('submit', function (e) {
 
@@ -208,8 +210,8 @@
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         async: false,
-                        success: function ( res ) {
-                            console.log ( res )
+                        success: function (res) {
+                            console.log(res)
                         }
                     });
                 }
