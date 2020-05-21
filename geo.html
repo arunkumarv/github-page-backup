@@ -11,6 +11,11 @@
             height: 500px;
         }
 
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -51,10 +56,11 @@
             border: 1px solid #cbcbcb;
             padding: 5px 8px;
         }
+
         a.mylink {
             text-decoration: none;
             background-color: azure;
-            color:#071a39;
+            color: #071a39;
         }
     </style>
 </head>
@@ -65,13 +71,13 @@
         <div class="column left">
             <p>
                 Latitude & Longitude of all the districts in India - derived from geoJSONs.
-                The geoJSON for states are available at geojson-states-extractor. 
+                The geoJSON for states are available at geojson-states-extractor.
                 Check README of GitHubs for details.
                 Click on a dot.
             </p>
             <div id="mapid">
             </div>
-           
+
         </div>
         <div class="column right">
             <h2>Details</h2>
@@ -176,7 +182,7 @@
                     The resolution of geoJSON files can be reduced with
                     <a href="https://mapshaper.org/">Mapshaper</a>
                 </p>
-                
+
             </div>
 
         </div>
@@ -204,18 +210,18 @@
 
         var markerIcon = new MarkerIcon({ iconUrl: markerIconUrl });
 
-        
-        
+
+
         var map = L.map('mapid').setView([23.803594, 79.657438], 4);
 
-        L.marker([13.066032041715918 , 80.253286600852160], { icon: markerIcon }).addTo(map).bindPopup("Chennai, Tamil Nadu, <br>13.066032041715918, 80.253286600852160");
+        L.marker([13.066032041715918, 80.253286600852160], { icon: markerIcon }).addTo(map).bindPopup("Chennai, Tamil Nadu, <br>13.066032041715918, 80.253286600852160");
 
         L.marker([18.950038597674375, 72.850997751786240], { icon: markerIcon }).addTo(map).bindPopup("Mumbai, Maharashtra,<br>18.950038597674375, 72.850997751786240");
 
         L.marker([27.074989480779475, 78.138365336515260], { icon: markerIcon }).addTo(map).bindPopup("Agra, Uttar Pradesh,<br>27.074989480779475, 78.138365336515260");
 
         L.marker([21.151652261799070, 78.956094845942860], { icon: markerIcon }).addTo(map).bindPopup("Nagpur, Maharashtra,<br>21.151652261799070, 78.956094845942860");
-        
+
         let geojson;
 
         L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
