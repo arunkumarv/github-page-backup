@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Lat Longs</title>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <style>
+        #mapid {
+            height: 500px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two unequal columns that floats next to each other */
+        .column {
+            float: left;
+            padding: 10px;
+        }
+
+        .left {
+            width: 60%;
+        }
+
+        .right {
+            width: 40%;
+        }
+
+        h1 {
+            margin-bottom: 3px;
+            padding-left: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #cbcbcb;
+            padding: 5px 8px;
+        }
+        a.mylink {
+            text-decoration: none;
+            background-color: azure;
+            color:#071a39;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Indian districts LatLong & statewise geoJSON files</h1>
+    <div class="row">
+        <div class="column left">
+            <p>
+                Latitude & Longitude of all the districts in India.
+                The geoJSON for states are available at geojson-states-extractor.
+                Click on a dot.
+            </p>
+            <div id="mapid">
+            </div>
+            <p>
+                High resolution geoJSON for all India is available at
+                <a href="http://projects.datameet.org/maps/">projects.datameet.org</a>.
+                The resolution of geoJSON files can be reduced with
+                <a href="https://mapshaper.org/">Mapshaper</a>
+            </p>
+        </div>
+        <div class="column right">
+            <h2>Column 2</h2>
+            <p>
+                Download Latlongs:
+                <a
+                    href="https://raw.githubusercontent.com/arunkumarv/logic-snippets/master/india-districts-latlongs/data/districts.csv">
+                    CSV
+                </a>,
+                <a
+                    href="https://raw.githubusercontent.com/arunkumarv/logic-snippets/master/india-districts-latlongs/data/districts.json">
+                    JSON
+                </a>
+            </p>
+            <p>
+                GitHub:
+                <a href="https://github.com/arunkumarv/logic-snippets/tree/master/india-districts-latlongs">
+                    India Districts Latlongs
+                </a>,
+                <a href="https://github.com/arunkumarv/logic-snippets/tree/master/geojson-states-extractor">
+                    GeoJSON states extractor
+                </a>
+            </p>
+            <div>
+                <table>
+                    <tr>
+                        <td>District</td>
+                        <td>State</td>
+                        <td>Latitude</td>
+                        <td>Longitude</td>
+                    </tr>
+                    <tr>
+                        <td> Adilabad </td>
+                        <td> Andhra Pradesh </td>
+                        <td> 19.300265396150905 </td>
+                        <td> 78.870467904160020 </td>
+                    </tr>
+                    <tr>
+                        <td> Agra </td>
+                        <td> Uttar Pradesh </td>
+                        <td> 27.074989480779475 </td>
+                        <td> 78.138365336515260 </td>
+                    </tr>
+                    <tr>
+                        <td> Ahmadabad </td>
+                        <td> Gujarat </td>
+                        <td> 22.740060207461937 </td>
+                        <td> 72.225307096148980 </td>
+                    </tr>
+                    <tr>
+                        <td> Ahmadnagar </td>
+                        <td> Maharashtra </td>
+                        <td> 19.159232423592044 </td>
+                        <td> 74.604525968430610 </td>
+                    </tr>
+                    <tr>
+                        <td> Aizawl </td>
+                        <td> Mizoram </td>
+                        <td> 23.841400147553670 </td>
+                        <td> 92.915112468062470 </td>
+                    </tr>
+                    <tr>
+                        <td> Ajmer </td>
+                        <td> Rajasthan </td>
+                        <td> 26.313814499732040 </td>
+                        <td> 74.630810262765750 </td>
+                    </tr>
+                    <tr>
+                        <td> Akola </td>
+                        <td> Maharashtra </td>
+                        <td> 20.762082652670305 </td>
+                        <td> 77.154660096463160 </td>
+                    </tr>
+                    <tr>
+                        <td> Alappuzha </td>
+                        <td> Kerala </td>
+                        <td> 9.487389333414159 </td>
+                        <td> 76.487155061130140 </td>
+                    </tr>
+                    <tr>
+                        <td> Aligarh </td>
+                        <td> Uttar Pradesh </td>
+                        <td> 27.873478501193603 </td>
+                        <td> 78.050001260657500 </td>
+                    </tr>
+                    <tr>
+                        <td> Alirajpur </td>
+                        <td> Madhya Pradesh </td>
+                        <td> 22.284659816473976 </td>
+                        <td> 74.388675321371950 </td>
+                    </tr>
+                </table>
+                <p>
+                    <a
+                        href="https://github.com/arunkumarv/logic-snippets/blob/master/india-districts-latlongs/data/districts.csv">
+                        Complete Data&gt;&gt;
+                    </a>
+                </p>
+                <p>
+                    By: <a href="https://arunkumarv.github.io" class="mylink">arunkumarv</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/leaflet.js"></script>
+
+    <script>
+        let markerIconUrl = "images/red-dot.png";
+
+        var MarkerIcon = L.Icon.extend({
+            options: {
+                iconSize: [10, 10],
+                //shadowSize: [50, 64],
+                //iconAnchor: [22, 94],
+                //shadowAnchor: [4, 62],
+                //popupAnchor: [-3, -76]
+            }
+        });
+
+        var markerIcon = new MarkerIcon({ iconUrl: markerIconUrl });
+
+        
+        
+        var map = L.map('mapid').setView([23.803594, 79.657438], 4);
+
+        L.marker([13.066032041715918 , 80.253286600852160], { icon: markerIcon }).addTo(map).bindPopup("Chennai, Tamil Nadu, <br>13.066032041715918, 80.253286600852160");
+
+        L.marker([18.950038597674375, 72.850997751786240], { icon: markerIcon }).addTo(map).bindPopup("Mumbai, Maharashtra,<br>18.950038597674375, 72.850997751786240");
+
+        L.marker([27.074989480779475, 78.138365336515260], { icon: markerIcon }).addTo(map).bindPopup("Agra, Uttar Pradesh,<br>27.074989480779475, 78.138365336515260");
+
+        L.marker([21.151652261799070, 78.956094845942860], { icon: markerIcon }).addTo(map).bindPopup("Nagpur, Maharashtra,<br>21.151652261799070, 78.956094845942860");
+        
+        let geojson;
+
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+
+        }).addTo(map);
+
+
+        $.get('pub/india.json', function (res) {
+
+            if (geojson) geojson.clearLayers();
+
+            geojson = L.geoJson(res, { style: { weight: 2, opacity: 1, color: '#888', dashArray: '3', fillOpacity: 0, fillColor: '#fff' }, onEachFeature: function () { } }).addTo(map);
+        });
+
+    </script>
+</body>
+
+</html>
