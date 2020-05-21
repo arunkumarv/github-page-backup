@@ -30,8 +30,10 @@
         }
 
         h1 {
-            margin-bottom: 3px;
+            margin-bottom: 0px;
             padding-left: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
         }
 
         /* Clear floats after the columns */
@@ -62,21 +64,17 @@
     <div class="row">
         <div class="column left">
             <p>
-                Latitude & Longitude of all the districts in India.
-                The geoJSON for states are available at geojson-states-extractor.
+                Latitude & Longitude of all the districts in India - derived from geoJSONs.
+                The geoJSON for states are available at geojson-states-extractor. 
+                Check README of GitHubs for details.
                 Click on a dot.
             </p>
             <div id="mapid">
             </div>
-            <p>
-                High resolution geoJSON for all India is available at
-                <a href="http://projects.datameet.org/maps/">projects.datameet.org</a>.
-                The resolution of geoJSON files can be reduced with
-                <a href="https://mapshaper.org/">Mapshaper</a>
-            </p>
+           
         </div>
         <div class="column right">
-            <h2>Column 2</h2>
+            <h2>Details</h2>
             <p>
                 Download Latlongs:
                 <a
@@ -173,13 +171,19 @@
                     </a>
                 </p>
                 <p>
-                    By: <a href="https://arunkumarv.github.io" class="mylink">arunkumarv</a>
+                    High resolution geoJSON for all India is available at
+                    <a href="http://projects.datameet.org/maps/">projects.datameet.org</a>.
+                    The resolution of geoJSON files can be reduced with
+                    <a href="https://mapshaper.org/">Mapshaper</a>
                 </p>
+                
             </div>
 
         </div>
     </div>
-
+    <div style="text-align: center;margin-top: 20px;">
+        By: <a href="https://arunkumarv.github.io" class="mylink">arunkumarv</a>
+    </div>
 
 
     <script src="js/jquery-3.4.1.min.js"></script>
