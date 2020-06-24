@@ -30,7 +30,15 @@
 
     <!-- As a link -->
     <nav class="navbar navbar-expand-sm border">
-        <span class="navbar-brand mb-0">לחשוב אחרת</span>
+        <span class="navbar-brand mb-0" onmouseover="decodeText()" onmouseout="encodeText()" id="title">לחשוב אחרת</span>
+        <script>
+            function decodeText(){
+                $("#title").html('Think Different');
+            }
+            function encodeText() {
+                $("#title").html('לחשוב אחרת');
+            }
+        </script>
     </nav>
 
     <div class="container-fluid">
@@ -73,13 +81,13 @@
                     </div>
                     <div>
                         <ul class="myicons">
-                            <li>
+                           <!--  <li>
                                 <a href="https://www.linkedin.com/in/arunkumarv31">
                                     <span>
                                         <i class="fab fa-linkedin-in"></i>
                                     </span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="https://medium.com/@arunkumarv">
                                     <span>
@@ -107,14 +115,28 @@
                                         <i class="fab fa-flickr"></i>
                                     </span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="https://arunkumarv.tumblr.com">
                                     <span>
                                         <i class="fab fa-tumblr"></i>
                                     </span>
                                 </a>
-                            </li> -->
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/arunkumar.vasudevan">
+                                    <span>
+                                        <i class="fab fa-instagram"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://facebook.com/akv31">
+                                    <span>
+                                        <i class="fab fa-facebook-square"></i>
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
