@@ -56,6 +56,12 @@ a {
     transition: color 0.2s;
 }
 
+a:hover {
+    color: #007acc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
 .project-entry {
     border: 1px solid #e6ecf1;
     margin-bottom: 20px;
