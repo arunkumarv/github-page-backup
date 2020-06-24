@@ -21,17 +21,18 @@ body {
 h1.name {
     font-size: 20px;
     line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     font-weight: 500;
     margin: 0;
-    color: #333;
+    color: #555;
 }
 
 .tagline {
     margin-top: 5px;
     font-size: 15px;
     font-weight: 500;
+    margin-bottom: 20px;
+    color: #666;
 }
 
 .desc {
@@ -49,6 +50,30 @@ h1.name {
     font-weight: 300;
 }
 
+a {
+    color: #007acc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.project-entry {
+    border: 1px solid #e6ecf1;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
+  }
+  
+  .project-entry p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .project-entry h6 {
+   color: #333;
+   font-weight: normal;
+  }
 .meta-header {
     font-size: 12px;
     text-transform: uppercase;

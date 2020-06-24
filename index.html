@@ -16,7 +16,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.1/js/all.min.js" integrity="sha256-z8hBnL7E+BxBzJU6Bh2blMfEk+pUuenLvlRurRdaBP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.1/js/all.min.js"
+        integrity="sha256-z8hBnL7E+BxBzJU6Bh2blMfEk+pUuenLvlRurRdaBP4=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -27,9 +28,105 @@
 </head>
 
 <body>
+    <div class="container mt-5" style="max-width: 1000px;">
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <img class="rounded-circle z-depth-2" alt="100x100" src="images/a.jpg" style="width:200px;"
+                    data-holder-rendered="true">
+                <div class="mt-4">
+                    <h1 class="name">
+                        Arunkumar V
+                    </h1>
+                    <div class="mt-4">
+                        Devise - Design - Develop
+                    </div>
+                    <div class="tagline mt-4">
+                        Full stack developer @ <a href="https://cdac.in">CDAC</a>
+                    </div>
+                    <div class="mt-4">
+
+                        <ul class="myicons">
+                            <li>
+                                <a href="https://www.linkedin.com/in/arunkumarv31">
+                                    <span>
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/arunkumarv">
+                                    <span>
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://medium.com/@arunkumarv">
+                                    <span>
+                                        <i class="fab fa-medium-m"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.goodreads.com/user/show/60217603-arun">
+                                    <span>
+                                        <i class="fab fa-goodreads"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="p-3" style="color: #666;font-weight:400;font-size: 12px;">
+                    Personal Projects
+                </div>
+                <div class="project-entry">
+                    <h6>An RTOS scheduler (A simple task switcher)</h6>
+                    <p>
+                        A simple scheduler from scratch. It is specifically written for Atmega328P.<br>
+                        Utilised: C, avr-gcc toolchain.
+                        <a target="_blank" href="https://www.youtube.com/watch?v=pLknZu1mUhs">Youtube</a>,
+                        <a target="_blank" href="https://github.com/arunkumarv/rtos">Github</a>
+                    </p>
+                </div>
+                <div class="project-entry">
+                    <h6>Nila - Malayalam English Dictionary</h6>
+                    <p>
+                        A malayalam English Dictionary. Tested only on Chrome browser.
+                        Utilised: Python Flask, SQLAlchemy, Google Transiterate API & MySQL.
+                        <a target="_blank" href="https://arunkumarv.pythonanywhere.com/">Nila Dictionary</a>
+                    </p>
+                </div>
+                <div class="project-entry">
+                    <h6>Instant Series - Transiterate extensions</h6>
+                    <p>
+                        Browser extensions to see the Malayalam/Tamil meanings in a popup. <br>
+                        <a target="_blank"
+                            href="https://chrome.google.com/webstore/detail/instant-malayalam/nflhocbogkaapgmlagfkpllhlafaljki">Chrome
+                            Malayalam</a>,
+                        <a target="_blank"
+                            href="https://chrome.google.com/webstore/detail/instant-tamil/cbadcogdkhhkoghhcablnpbpadkdiljj?hl=ta">Firefox
+                            Malayalam</a>,
+                        <a target="_blank"
+                            href="https://addons.mozilla.org/en-US/firefox/addon/instant-malayalam/">Chrome Tamil</a>,
+                        <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/instant-tamil/">Firefox
+                            Tamil</a>
+                    </p>
+                </div>
+                <div style="color: rgb(126, 126, 126);font-weight:400;font-size: 12px; text-align: right;margin-right: 10px;">
+                    <a href="/projects.html">
+                        More &gt;&gt;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- As a link -->
-    <nav class="navbar navbar-expand-sm border">
+    <!--  <nav class="navbar navbar-expand-sm border">
         <span class="navbar-brand mb-0" onmouseover="decodeText()" onmouseout="encodeText()" id="title">לחשוב אחרת</span>
         <script>
             function decodeText(){
@@ -40,33 +137,33 @@
             }
         </script>
     </nav>
-
-    <div class="container-fluid">
+ -->
+    <!-- <div class="container">
         <div class="row">
-            <div class="col-lg-8" style="padding:0;">
-                <img src="images/akv-min.jpg" style="width:100%;" />
+            <div class="col-lg-6 mt-5" style="padding:0;">
+                <img class="rounded-circle z-depth-2" alt="100x100" src="images/a.jpg" style="width:300px;"
+          data-holder-rendered="true">
+                
             </div>
             <div class="col-lg">
-                <div class="body-content">
+                <div class="m-5">
                     <h1 class="name">Arunkumar V</h1>
                     <div class="tagline">
-                        Full stack web apps developer, works at CDAC.
-                    </div>
-                    <div class="my-btn">
-                        <a class="btn btn-info btn-block" href="https://www.linkedin.com/in/arunkumarv31/">Read my
+                        Full stack developer at CDAC.
+                    </div> -->
+    <!--  <div class="my-btn">
+                        <a class="btn btn-info" href="https://www.linkedin.com/in/arunkumarv31/">Read my
                             Linkedin</a>
-                    </div>
-                    <div class="desc">
+                    </div> -->
+    <!-- <div class="desc">
                         <p>
-                            My mission is to create products that is useful to and used by millions.
-                        </p>
-                        <p>
-                            As a software engineer at CDAC, I have been involved in the software/embedded projects for various
+                            At CDAC, I have been involved in the software/embedded projects for various
                             government & private organizations.
                         </p>
-                        <a href="/projects.html" class="badge badge-light">Personal Projects</a>
-                        <!-- <a target="_blank" class="badge badge-light" href="https://arunkumarv.blogspot.com">Blog</a> -->
-                    </div>
+                        <a href="/projects.html" class="btn btn-outline-secondary btn-sm">Personal Projects</a>
+                         -->
+    <!-- <a target="_blank" class="badge badge-light" href="https://arunkumarv.blogspot.com">Blog</a> -->
+    <!-- </div>
                     <div class="meter">
                         <div class="meta-header">
                             Work
@@ -81,16 +178,16 @@
                     </div>
                     <div class="meter">
                         <div class="meta-header">
-                            Other
+                            Others
                         </div>
                         <ul class="myicons">
-                           <!--  <li>
+                           <li>
                                 <a href="https://www.linkedin.com/in/arunkumarv31">
                                     <span>
                                         <i class="fab fa-linkedin-in"></i>
                                     </span>
                                 </a>
-                            </li> -->
+                            </li>
                             <li>
                                 <a href="https://github.com/arunkumarv">
                                     <span>
@@ -113,21 +210,21 @@
                                     </span>
                                 </a>
                             </li>
-                            <!-- <li>
+                            <li>
                                 <a href="https://twitter.com/arunkumarv">
                                     <span>
                                         <i class="fab fa-twitter"></i>
                                     </span>
                                 </a>
                             </li> -->
-                            <!-- <li>
+    <!-- <li>
                                 <a href="https://flickr.com/photos/gangaeyam">
                                     <span>
                                         <i class="fab fa-flickr"></i>
                                     </span>
                                 </a>
                             </li> -->
-                            <!-- <li>
+    <!-- <li>
                                 <a href="https://arunkumarv.tumblr.com">
                                     <span>
                                         <i class="fab fa-tumblr"></i>
@@ -148,12 +245,12 @@
                                     </span>
                                 </a>
                             </li> -->
-                        </ul>
+    <!-- </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
