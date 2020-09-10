@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+
+<body>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script>
+
+        
+        let data = {
+            fromDate: '31/03/1986',
+            toDate: '31/03/1986',
+            name: 'Arunkumar V',
+        }
+
+        let params = $.param(data)
+
+        let taluk = ['arun', 'ajith', 'time'];
+
+        console.log(params+"&taluk="+taluk.join(","))
+    </script>
+
+</body>
+
+</html>
