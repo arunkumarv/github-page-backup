@@ -66,7 +66,6 @@ a:hover {
     border: 1px solid #e6ecf1;
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #fff;
     box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1);
   }
   
@@ -112,4 +111,8 @@ ul.myicons li a {
 
 ul.myicons li a:hover {
     color: #20817c;
+}
+
+.latest {
+    background-color: aliceblue;
 }

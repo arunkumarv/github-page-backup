@@ -2,11 +2,21 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163409410-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163409410-1');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chrome Builds</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./code.js"></script>
     <style>
         .main {
@@ -29,7 +39,7 @@
         }
 
         .credits {
-           margin-top: 30px;
+            margin-top: 30px;
             text-align: center;
         }
 
@@ -38,26 +48,29 @@
         }
 
         ul#link-list {
-           padding-left: 0;
+            padding-left: 0;
         }
 
-        ul#link-list> li {
+        ul#link-list>li {
             display: inline-block;
             zoom: 1;
             border: 1px solid #a0a0a0;
             *display: inline;
             padding: 5px 10px;
-            border-radius: 5px;;
+            border-radius: 5px;
+            ;
             margin-right: 5px;
             margin-bottom: 5px;
             background-color: aliceblue;
         }
-        ul#link-list> li:hover {
+
+        ul#link-list>li:hover {
             background-color: beige;
         }
+
         a.linkman {
             text-decoration: none;
-            color:rgb(59, 86, 114);
+            color: rgb(59, 86, 114);
         }
     </style>
 </head>
@@ -87,15 +100,16 @@
 
         <div class="credits">
             <span>
-                The data is fetched from <a href="https://github.com/Bugazelle/chromium-all-old-stable-versions">Bugazelle/chromium-all-old-stable-versions</a>.
+                The data is fetched from <a
+                    href="https://github.com/Bugazelle/chromium-all-old-stable-versions">Bugazelle/chromium-all-old-stable-versions</a>.
             </span>
         </div>
 
         <div style="margin-top: 10px; text-align: center;">
-            <a href="https://omahaproxy.appspot.com/">omahaproxy</a> | 
-            <a href="https://www.chromium.org/getting-involved/download-chromium">chromium</a> | 
-            <a href="https://www.google.com/intl/en_in/chrome/canary/">canary</a> | 
-            <a href="/">arunkumarv</a> 
+            <a href="https://omahaproxy.appspot.com/">omahaproxy</a> |
+            <a href="https://www.chromium.org/getting-involved/download-chromium">chromium</a> |
+            <a href="https://www.google.com/intl/en_in/chrome/canary/">canary</a> |
+            <a href="/">arunkumarv</a>
         </div>
     </div>
 </body>
