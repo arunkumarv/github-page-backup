@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Builds</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./code.js"></script>
+    <style>
+        .main {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        table,
+        td,
+        th {
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+            padding: 6px 18px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 600px;
+        }
+
+        .credits {
+           margin-top: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul#link-list {
+           padding-left: 0;
+        }
+
+        ul#link-list> li {
+            display: inline-block;
+            zoom: 1;
+            border: 1px solid #a0a0a0;
+            *display: inline;
+            padding: 5px 10px;
+            border-radius: 5px;;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            background-color: aliceblue;
+        }
+        ul#link-list> li:hover {
+            background-color: beige;
+        }
+        a.linkman {
+            text-decoration: none;
+            color:rgb(59, 86, 114);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Chromium Previous Versions Download</h1>
+        <table>
+            <tr>
+                <td>Operating System</td>
+                <td><select name="" id="base-os"></select></td>
+            </tr>
+            <tr>
+                <td>Version</td>
+                <td><input type="number" name="" id="major-number" value="91"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="get-builds" onclick="getBuilds()">Get Builds</button></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <ul id="link-list"></ul>
+                </td>
+            </tr>
+        </table>
+
+        <div class="credits">
+            <span>
+                The data is fetched from <a href="https://github.com/Bugazelle/chromium-all-old-stable-versions">Bugazelle/chromium-all-old-stable-versions</a>.
+            </span>
+        </div>
+
+        <div style="margin-top: 10px; text-align: center;">
+            <a href="https://omahaproxy.appspot.com/">omahaproxy</a> | 
+            <a href="https://www.chromium.org/getting-involved/download-chromium">chromium</a> | 
+            <a href="https://www.google.com/intl/en_in/chrome/canary/">canary</a> | 
+            <a href="/">arunkumarv</a> 
+        </div>
+    </div>
+</body>
+
+</html>
