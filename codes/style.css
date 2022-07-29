@@ -1,0 +1,44 @@
+h1,
+h2 {
+  font-family: Lato;
+}
+
+.outer {
+  border: 1px solid grey;
+  padding: 30px;
+  max-height: 800px;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.subject {
+  border: 1px solid red;
+  padding: 30px;
+  position: relative;
+  background-color: white;
+}
+
+.thread {
+  border: 1px solid grey;
+  padding: 30px;
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+.popup {
+  position: absolute;
+  display: none;
+}
+
+.panel {
+  padding: 20px;
+  border: 1px sold grey;
+  background-color: grey;
+}
+.some-content {
+    border: 1px solid grey;
+    padding: 50px;
+}
+body {
+    overflow-y: hidden;
+}
