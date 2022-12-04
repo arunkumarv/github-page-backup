@@ -1,21 +1,56 @@
-var client = (function (exports) {
-    'use strict';
+<!DOCTYPE html>
+<html lang="en">
 
-    var Constants = /** @class */ (function () {
-        function Constants() {
-        }
-        Constants.APP_NAME = "Ayyo | അയ്യോ";
-        Constants.WATCHER_RADIUS_KM = 10;
-        return Constants;
-    }());
+<head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    var Model = /** @class */ (function () {
-        function Model() {
+    <title>Quick Start - Leaflet</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+
+    <link rel="stylesheet" href="static/leaflet.css" />
+    <script src="static/leaflet.js"></script>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
         }
-        Model.getFullData = function () {
-            return Model.cameraLocations;
-        };
-        Model.cameraLocations = [
+
+        .leaflet-container {
+            height: 100vh;
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .banner {
+            position: absolute;
+            padding: 0px 10px 5px;
+            border: 1px solid black;
+            top: 20px;
+            right: 10px;
+            z-index: 9999;
+            background-color: white;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="banner">
+        <div style="padding: 0px 3px 3px;text-align:center;color: rgb(251, 79, 0);">അയ്യോ ആപ്പ്</div>
+        <button id="start-stop-button" onclick="startStopPressed()">StartLoop</button>
+        <button onclick="currentCenterPressed()">@selectedCenter</button>
+        <button onclick="nowPressed()">@currentLocation</button>
+    </div>
+    <div id="map" style="width: 100%; height: 100vh;"></div>
+    <script>
+        const cameraLocations = [
             {
                 "WKT": "POINT (77.1287226 8.3150151)",
                 "Sl No.": 1,
@@ -7187,138 +7222,114 @@ var client = (function (exports) {
                 "Type of System": "AI Camera"
             }
         ];
-        return Model;
-    }());
+        const map = L.map('map', { zoomControl: false });
+        let isRunning = false;
+        const toggleButton = document.getElementById("start-stop-button");
 
-    var DomCreator = /** @class */ (function () {
-        function DomCreator() {
-        }
-        DomCreator.createTargetsDom = function (targets) {
-            var dom = document.createElement('div');
-            var table = document.createElement('table');
-            table.classList.add("mvd-table");
-            targets.forEach(function (target) {
-                var tr = table.insertRow();
-                var td1 = tr.insertCell(), td2 = tr.insertCell(); tr.insertCell();
-                td1.appendChild(document.createTextNode("".concat(target.cameraLocationName)));
-                td2.appendChild(document.createTextNode("".concat(target.distance, " KM")));
-            });
-            dom.appendChild(table);
-            return dom;
-        };
-        return DomCreator;
-    }());
+        map.setView([10.155137748879369, 76.36930369540057], 11);
 
-    var Watcher = /** @class */ (function () {
-        function Watcher() {
-        }
-        Watcher.startLoop = function (refreshTimeInSeconds) {
-            Watcher.someFun();
-            // Watcher.loopToken = setInterval(Watcher.getCurrentLocation, refreshTimeInSeconds * 1000)
-        };
-        Watcher.showNearby = function () {
-            // Watcher.someFun();
-            Watcher.getCurrentLocation();
-        };
-        Watcher.stopLoop = function () {
-            clearInterval(Watcher.loopToken);
-        };
-        Watcher.positionCallback = function (geolocationPosition) {
-            var geolocationCoordinates = geolocationPosition.coords;
-            console.log(geolocationCoordinates);
-            var targets = [];
-            Watcher.cameraLocations.forEach(function (cameraLocation) {
-                var distance = Watcher.calculateDistance(geolocationCoordinates.latitude, geolocationCoordinates.longitude, cameraLocation.Latitude, cameraLocation.Longitude);
-                if (distance < Constants.WATCHER_RADIUS_KM) {
-                    var target = {
-                        cameraLocationName: cameraLocation["Name of location"],
-                        distance: Math.round(distance * 10) / 10,
-                        cameraLication: { Latitude: cameraLocation.Latitude, Longitude: cameraLocation.Longitude }
-                    };
-                    targets.push(target);
-                    console.log(cameraLocation["Name of location"], Math.round(distance * 10) / 10, cameraLocation.Latitude, cameraLocation.Longitude);
-                }
-            });
-            console.log(targets);
-            var targetsDom = DomCreator.createTargetsDom(targets);
-            Watcher.deleteChildNodes(Watcher.detailsNode);
-            Watcher.detailsNode.appendChild(targetsDom);
-        };
-        Watcher.deleteChildNodes = function (myNode) {
-            while (myNode.firstChild) {
-                myNode.removeChild(myNode.lastChild);
-            }
-        };
-        Watcher.someFun = function () {
-            Watcher.getCurrentLocationDummy();
-        };
-        Watcher.errorCallback = function (geolocationPositionError) {
-            console.warn("ERROR(".concat(geolocationPositionError.code, "): ").concat(geolocationPositionError.message));
-            document.getElementById("details").innerText = JSON.stringify(geolocationPositionError.message); //ToDo: Update this to Text node and attach as DOM
-        };
-        Watcher.getCurrentLocation = function () {
-            navigator.geolocation.getCurrentPosition(Watcher.positionCallback, Watcher.errorCallback, Watcher.positionOptions);
-        };
-        Watcher.getCurrentLocationDummy = function () {
-            // return { Latitude: 10.155179508870496, Longitude: 76.36917755706448 } // Nedumbassery
-            // return {Latitude: 9.47314722399082, Longitude: 76.3372315032463} // Allp
-            return { Latitude: 9.053155302459837, Longitude: 76.63331670869138 };
-        };
-        Watcher.calculateDistance = function (lat1, lon1, lat2, lon2) {
-            var p = 0.017453292519943295; // Math.PI / 180
-            var c = Math.cos;
-            var a = 0.5 - c((lat2 - lat1) * p) / 2 +
-                c(lat1 * p) * c(lat2 * p) *
-                    (1 - c((lon2 - lon1) * p)) / 2;
-            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
-        };
-        Watcher.positionOptions = {
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'openstreetmaps | <a target="_blank" href="https://icons8.com/icon/93911/speed-camera">Speed Camera</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>'
+        }).addTo(map);
+
+        const iconSize = [16, 16];
+        const iconAnchor = [10, 10];
+
+        const meIcon = L.icon({
+            iconUrl: 'static/images/green.png',
+            iconSize:     iconSize,
+            // iconAnchor: [12, 10],
+            // popupAnchor: [-3, -76]
+        });
+
+        const cameraIcon = L.icon({
+            iconUrl: 'static/images/red.png',
+            iconSize:     iconSize,
+            iconAnchor: iconAnchor,
+            // popupAnchor: [-3, -76]
+        });
+
+        const positionOptions = {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
         };
-        Watcher.cameraLocations = Model.getFullData();
-        Watcher.detailsNode = document.getElementById('details');
-        return Watcher;
-    }());
 
-    var Application = /** @class */ (function () {
-        function Application() {
-            this.isRunning = false;
-            document.getElementById("title").innerText = Constants.APP_NAME;
-            this.controlButton = document.getElementById("control-button");
+        var markersLayer = new L.LayerGroup();
+
+        markersLayer.addTo(map);
+
+        function loop() {
+            console.log(new Date().getTime())
+            navigator.geolocation.getCurrentPosition(
+                function (geolocationPosition) {
+                    const myLocation = [geolocationPosition.coords.latitude, geolocationPosition.coords.longitude]
+                    addAllMarkers(myLocation)
+                    if (isRunning) {
+                        setTimeout(loop, 3000)
+                    }
+                },
+                function (geolocationPositionError) {
+                    console.log(geolocationPositionError)
+                },
+                positionOptions)
         }
-        Application.getInstance = function () {
-            return this._instance || (this._instance = new this());
-        };
-        Application.prototype.controlButtonPressed = function () {
-            if (this.isRunning) {
-                Watcher.stopLoop();
-                this.updateButton();
-            }
-            else {
-                Watcher.startLoop(1);
-                this.updateButton();
-            }
-            this.isRunning = !this.isRunning;
-        };
-        Application.prototype.showNearbyButtonPressed = function () {
-            Watcher.deleteChildNodes(Watcher.detailsNode);
-            var textNode = document.createTextNode("Loading...");
-            Watcher.detailsNode.appendChild(textNode);
-            Watcher.showNearby();
-        };
-        Application.prototype.updateButton = function () {
-            this.controlButton.style.backgroundColor = this.isRunning ? "#2196F3" : "#ff7878";
-            this.controlButton.innerText = this.isRunning ? "Start" : "Stop";
-        };
-        return Application;
-    }());
 
-    var app = Application.getInstance();
+        function addAllMarkers(myLocation) {
+            markersLayer.clearLayers();
+            map.setView(myLocation)
+            markersLayer.addLayer(new L.marker(myLocation, { icon: meIcon }));
+            cameraLocations.forEach((cameraLocation) => {
+                const distance = calculateDistance(myLocation[0], myLocation[1], cameraLocation.Latitude, cameraLocation.Longitude);
+                if (distance < 10) {
+                    const target = {
+                        cameraLocationName: cameraLocation["Name of location"],
+                        distance: Math.round(distance * 10) / 10,
+                        cameraLication: { Latitude: cameraLocation.Latitude, Longitude: cameraLocation.Longitude }
+                    };
+                    markersLayer.addLayer(L.marker([cameraLocation.Latitude, cameraLocation.Longitude], { icon: cameraIcon }))
+                }
+            });
+        }
 
-    exports.app = app;
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            var p = 0.017453292519943295;    // Math.PI / 180
+            var c = Math.cos;
+            var a = 0.5 - c((lat2 - lat1) * p) / 2 +
+                c(lat1 * p) * c(lat2 * p) *
+                (1 - c((lon2 - lon1) * p)) / 2;
 
-    return exports;
+            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+        }
 
-})({});
+        function startStopPressed() {
+            isRunning = !isRunning;
+            toggleButton.innerText = (isRunning ? "Stop" : "Start") + "Loop"
+            loop()
+        }
+
+        function currentCenterPressed() {
+            const loc = map.getCenter()
+            addAllMarkers([loc.lat, loc.lng])
+        }
+
+        function nowPressed() {
+            navigator.geolocation.getCurrentPosition(
+                function (geolocationPosition) {
+                    const myLocation = [geolocationPosition.coords.latitude, geolocationPosition.coords.longitude]
+                    addAllMarkers(myLocation)
+                },
+                function (geolocationPositionError) {
+                    console.log(geolocationPositionError)
+                },
+                positionOptions)
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
