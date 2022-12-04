@@ -56,6 +56,7 @@
         <button class="btn" id="start-stop-button" onclick="startStopPressed()">StartLoop</button>
         <button class="btn" onclick="currentCenterPressed()">@map Center</button>
         <button class="btn" onclick="nowPressed()">@currentLoc</button>
+        <div id="message"></div>
     </div>
     <div id="map" style="width: 100%; height: 100vh;"></div>
     <script>
@@ -7281,6 +7282,7 @@
                 },
                 function (geolocationPositionError) {
                     console.log(geolocationPositionError)
+                    document.getElementById("message").innerText = geolocationPositionError.message;
                 },
                 positionOptions)
         }
