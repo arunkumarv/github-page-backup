@@ -31,10 +31,21 @@
             position: absolute;
             padding: 0px 10px 5px;
             border: 1px solid black;
-            top: 20px;
+            bottom: 20px;
             right: 10px;
             z-index: 9999;
             background-color: white;
+        }
+
+        .btn {
+            color: #444444;
+            background: #F3F3F3;
+            border: 1px #DADADA solid;
+            padding: 5px 10px;
+            border-radius: 2px;
+            font-weight: bold;
+            font-size: 9pt;
+            outline: none;
         }
     </style>
 
@@ -44,9 +55,9 @@
 <body>
     <div class="banner">
         <div style="padding: 0px 3px 3px;text-align:center;color: rgb(251, 79, 0);">അയ്യോ ആപ്പ്</div>
-        <button id="start-stop-button" onclick="startStopPressed()">StartLoop</button>
-        <button onclick="currentCenterPressed()">@selectedCenter</button>
-        <button onclick="nowPressed()">@currentLocation</button>
+        <button class="btn" id="start-stop-button" onclick="startStopPressed()">StartLoop</button>
+        <button class="btn" onclick="currentCenterPressed()">@map Center</button>
+        <button class="btn" onclick="nowPressed()">@currentLoc</button>
     </div>
     <div id="map" style="width: 100%; height: 100vh;"></div>
     <script>
@@ -7230,7 +7241,7 @@
 
         const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            attribution: 'openstreetmaps | <a target="_blank" href="https://icons8.com/icon/93911/speed-camera">Speed Camera</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>'
+            attribution: 'openstreetmaps | icons by <a target="_blank" href="https://icons8.com">Icons8</a>'
         }).addTo(map);
 
         const iconSize = [16, 16];
@@ -7238,14 +7249,14 @@
 
         const meIcon = L.icon({
             iconUrl: 'static/images/green.png',
-            iconSize:     iconSize,
+            iconSize: iconSize,
             // iconAnchor: [12, 10],
             // popupAnchor: [-3, -76]
         });
 
         const cameraIcon = L.icon({
             iconUrl: 'static/images/red.png',
-            iconSize:     iconSize,
+            iconSize: iconSize,
             iconAnchor: iconAnchor,
             // popupAnchor: [-3, -76]
         });
