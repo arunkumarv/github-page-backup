@@ -54,8 +54,8 @@
     <div class="banner">
         <div style="padding: 0px 3px 3px;text-align:center;color: rgb(251, 79, 0);">അയ്യോ ആപ്പ്</div>
         <button class="btn" id="start-stop-button" onclick="startStopPressed()">StartLoop</button>
-        <button class="btn" onclick="currentCenterPressed()">@map Center</button>
-        <button class="btn" onclick="nowPressed()">@currentLoc</button>
+        <button class="btn" onclick="mapCenterPressed()">@map Center</button>
+        <button class="btn" onclick="currentLocPressed()">@currentLoc</button>
         <div id="message"></div>
     </div>
     <div id="map" style="width: 100%; height: 100vh;">
@@ -7268,9 +7268,13 @@
             maximumAge: 0
         };
 
+        const loopTime = 60 * 1000
+
         var markersLayer = new L.LayerGroup();
 
         markersLayer.addTo(map);
+
+        let beeped = false;
 
         function loop() {
             console.log(new Date().getTime())
@@ -7279,41 +7283,48 @@
                     const myLocation = [geolocationPosition.coords.latitude, geolocationPosition.coords.longitude]
                     addAllMarkers(myLocation)
                     if (isRunning) {
-                        setTimeout(loop, 3000)
+                        setTimeout(loop, loopTime)
                     }
                 },
                 function (geolocationPositionError) {
                     console.log(geolocationPositionError)
-                    document.getElementById("message").innerText = geolocationPositionError.message;
+                    setMessage(geolocationPositionError.message)
                 },
                 positionOptions)
         }
 
+        function setMessage(message) {
+            document.getElementById("message").innerText = message;
+        }
+
         function addAllMarkers(myLocation) {
+            beeped = false;
             markersLayer.clearLayers();
             map.setView(myLocation)
             markersLayer.addLayer(new L.marker(myLocation, { icon: meIcon }));
             cameraLocations.forEach((cameraLocation) => {
                 const distance = calculateDistance(myLocation[0], myLocation[1], cameraLocation.Latitude, cameraLocation.Longitude);
                 if (distance < 10) {
-                    const target = {
-                        cameraLocationName: cameraLocation["Name of location"],
-                        distance: Math.round(distance * 10) / 10,
-                        cameraLication: { Latitude: cameraLocation.Latitude, Longitude: cameraLocation.Longitude }
-                    };
-                    markersLayer.addLayer(L.marker([cameraLocation.Latitude, cameraLocation.Longitude], { icon: cameraIcon }))
+                    let marker = L.marker([cameraLocation.Latitude, cameraLocation.Longitude], { icon: cameraIcon })
+                    var newpopup = L.popup({ closeOnClick: false }).setContent(`${cameraLocation["Name of location"]} (${Math.round(distance * 10) / 10})`);
+                    marker.bindPopup(newpopup);
+                    markersLayer.addLayer(marker);
+                    if(!beeped){
+                        beepSound.play();
+                        beeped = true;
+                    }
                 }
             });
         }
 
         function calculateDistance(lat1, lon1, lat2, lon2) {
-            var p = 0.017453292519943295;    // Math.PI / 180
+            var p = 0.017453292519943295;    
             var c = Math.cos;
             var a = 0.5 - c((lat2 - lat1) * p) / 2 +
                 c(lat1 * p) * c(lat2 * p) *
                 (1 - c((lon2 - lon1) * p)) / 2;
 
-            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+            return 12742 * Math.asin(Math.sqrt(a)); 
         }
 
         function startStopPressed() {
@@ -7322,13 +7333,12 @@
             loop()
         }
 
-        function currentCenterPressed() {
-            // beepSound.play()
+        function mapCenterPressed() {
             const loc = map.getCenter()
             addAllMarkers([loc.lat, loc.lng])
         }
 
-        function nowPressed() {
+        function currentLocPressed() {
             navigator.geolocation.getCurrentPosition(
                 function (geolocationPosition) {
                     const myLocation = [geolocationPosition.coords.latitude, geolocationPosition.coords.longitude]
@@ -7336,6 +7346,7 @@
                 },
                 function (geolocationPositionError) {
                     console.log(geolocationPositionError)
+                    setMessage(geolocationPositionError.message);
                 },
                 positionOptions)
         }
