@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163409410-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163409410-1');
+    </script>
     <base target="_top">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7309,7 +7318,7 @@
                     var newpopup = L.popup({ closeOnClick: false }).setContent(`${cameraLocation["Name of location"]} (${Math.round(distance * 10) / 10})`);
                     marker.bindPopup(newpopup);
                     markersLayer.addLayer(marker);
-                    if(!beeped){
+                    if (!beeped) {
                         beepSound.play();
                         beeped = true;
                     }
@@ -7318,13 +7327,13 @@
         }
 
         function calculateDistance(lat1, lon1, lat2, lon2) {
-            var p = 0.017453292519943295;    
+            var p = 0.017453292519943295;
             var c = Math.cos;
             var a = 0.5 - c((lat2 - lat1) * p) / 2 +
                 c(lat1 * p) * c(lat2 * p) *
                 (1 - c((lon2 - lon1) * p)) / 2;
 
-            return 12742 * Math.asin(Math.sqrt(a)); 
+            return 12742 * Math.asin(Math.sqrt(a));
         }
 
         function startStopPressed() {
